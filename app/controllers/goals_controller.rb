@@ -3,7 +3,11 @@ class GoalsController < ApplicationController
   before_action :authorized, only: [:edit, :update, :destroy, :complete]
   
   def new
-    @goal = Goal.new.decorate
+    @goal = Goal.new
+  end
+  
+  def show
+    @goal = Goal.find(params[:id])
   end
 
   def create

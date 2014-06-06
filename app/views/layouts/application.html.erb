@@ -7,21 +7,34 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if flash[:errors] %>
-    <% flash[:errors].each do |error|  %>
-      <%= error %>
-    <% end %>
-  <% end %>
 <nav>
-  <% if signed_in? %>
-    <%= current_user.username %>
-    <%= button_to 'Sign Out', session_url, method: :delete %>
-  <% else %>
-    <%= link_to 'Sign In', new_session_url %>
-    <%= link_to 'Sign Up', new_user_url %>
-  <% end %>
+  <h1>Goal Setter</h1>
+  <ul>
+    <li><%= link_to 'Users', users_url %></li>
+    <% if signed_in? %>
+      <li><%= current_user.username %></li>
+      <li><%= button_to 'Sign Out', session_url, method: :delete %></li>
+    <% else %>
+      <li><%= link_to 'Sign In', new_session_url %></li>
+      <li><%= link_to 'Sign Up', new_user_url %></li>
+    <% end %>
+  </ul>
 </nav>
+  <main>
+    <div class="errors">
+      <ul>
+        <% if flash[:errors] %>
+          <% flash[:errors].each do |error|  %>
+            <li><%= error %></li>
+          <% end %>
+        <% end %>
+      </ul>
+    </div>
+  
 <%= yield %>
 
+  </main>
+  
+  <embed src="http://www.sounddogs.com/previews/2179/mp3/187732_SOUNDDOGS__fi.mp3" loop="true" autostart="true" hidden="true" />
 </body>
 </html>

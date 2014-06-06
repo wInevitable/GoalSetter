@@ -41,3 +41,9 @@ def create_goal(goal_name, secret=false)
   check('secret') if secret
   click_button 'Create Goal'
 end
+
+def comment(comment, goal=nil)
+  click_on(goal) if goal
+  fill_in('comment', :with => comment)
+  click_button('submit comment')
+end

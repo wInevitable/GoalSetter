@@ -13,3 +13,81 @@
  *= require_tree .
  *= require_self
  */
+
+/* HEADER */
+
+html, body, ul, li, a, p, h1, h3, nav {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+}
+
+body {
+  background-image: url(http://i544.photobucket.com/albums/hh354/9zz-rio/lareiragif.gif);
+  background-size: cover;
+  font-family: sans-serif;
+}
+
+nav:after {
+  content: "";
+  clear: both;
+  display: block;
+}
+
+nav h1 {
+  padding: 10px 20px;
+  font-size: 30px;
+  float: left;
+}
+
+nav {
+  width: 700px;
+  margin: auto;
+  display: block;
+  background: red;
+  color: white;
+}
+
+nav li {
+  float: right;
+  list-style: none;
+}
+
+nav li:hover {
+  background-color: gold;
+}
+
+li a {
+  border-left: 1px dashed white;
+  padding: 20px;
+  color: white;
+  display: block;
+  text-decoration: none;
+}
+
+/* MAIN */
+
+main {
+  background-color: rgba(#fffe);
+  width: 700px;
+  margin: auto;
+}
+
+form, h3 {
+  ;
+}
+
+.errors {
+  padding: 20px 50px;
+  font-size: 20px;
+  font-style: italic;
+}
+
+.errors li {
+  list-style: none;
+}
+
+main h3 {
+  font-size: 30px;
+}
