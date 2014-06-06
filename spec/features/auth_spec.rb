@@ -2,7 +2,6 @@ require 'rails_helper'
 require 'spec_helper'
 
 feature "the authentication process" do
-  
   before(:each) do
     sign_up('testing_username')
   end

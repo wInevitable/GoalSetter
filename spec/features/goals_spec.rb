@@ -6,7 +6,7 @@ feature 'goals' do
     sign_up('user')
   end
 
-  scenario 'creating a new goal' do
+  feature 'creating a new goal' do
     before(:each) do
       visit new_goal_url
     end
@@ -22,7 +22,7 @@ feature 'goals' do
     end
   end
   
-  scenario 'completing a goal' do
+  feature 'completing a goal' do
     before(:each) do
       create_goal('sample goal')
     end
@@ -33,7 +33,7 @@ feature 'goals' do
     end
   end
   
-  scenario 'other user viewers' do
+  feature 'other user viewers' do
     before(:each) do
       create_goal('sample goal')
       create_goal('private goal', true)
@@ -43,6 +43,51 @@ feature 'goals' do
     
     it 'should not see private goals' do
       expect(page).not_to have_content('private goal')
+    end
+    
+    it 'should not have a complete goal button' do
+      expect(page).not_to have_button('complete goal')
+    end
+    
+    it 'should have public goals' do
+      expect(page).to have_content('sample goal')
+    end
+    
+    it 'should not be able to edit a goal' do
+      visit edit_goal_url(1)
+      expect(page).to have_content('Log In')
+    end
+    
+    it 'should not be able to delete a goal' do
+      expect(page).not_to have_button('delete goal')
+    end
+  end
+  
+  feature 'edit a goal' do
+    before(:each) do
+      create_goal('sample goal')
+    end
+    
+    it 'should be editable' do
+      click_link('edit goal')
+      expect(page).to have_content('edit goal')
+    end
+    
+    it 'should update goal' do
+      click_link('edit goal')
+      fill_in 'goal', :with => 'updated goal'
+      expect(page).to have_content('updated goal')
+    end
+  end
+  
+  feature 'destroy a goal' do
+    before(:each) do
+      create_goal('sample goal')
+    end
+    
+    it 'should be able to delete goals' do
+      click_button('delete goal')
+      expect(page).not_to have_content('sample goal')
     end
   end
 end

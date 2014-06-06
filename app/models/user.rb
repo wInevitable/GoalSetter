@@ -7,6 +7,9 @@ class User < ActiveRecord::Base
     self.session_token ||= SecureRandom.urlsafe_base64(16)
   end
   
+  has_many :goals
+  #has_many :comments
+  
   def self.find_by_credentials(username, password)
     user = find_by(username: username)
     user.try(:is_password?, password) ? user : nil

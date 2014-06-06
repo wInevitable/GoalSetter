@@ -1,0 +1,9 @@
+<%= form_for @goal do |f| %>
+  <%= f.label :goal, 'goal' %>
+  <%= f.text_field :goal %>
+  
+  <%= f.label :secret, 'secret' %>
+  <%= f.check_box :secret %>
+  
+  <%= f.submit %>
+<% end %>
