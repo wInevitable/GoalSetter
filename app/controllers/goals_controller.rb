@@ -1,9 +1,9 @@
 class GoalsController < ApplicationController
   before_action :require_signed_in
-  before_action :authorized, only: [:edit, :update, :destroy]
+  before_action :authorized, only: [:edit, :update, :destroy, :complete]
   
   def new
-    @goal = Goal.new
+    @goal = Goal.new.decorate
   end
 
   def create
@@ -32,6 +32,11 @@ class GoalsController < ApplicationController
   
   def destroy
     @goal.destroy
+    redirect_to user_url(@goal.user_id)
+  end
+  
+  def complete
+    @goal.update!(completed: true)
     redirect_to user_url(@goal.user_id)
   end
     

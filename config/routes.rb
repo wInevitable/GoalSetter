@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   
-  resources :goals
+  resources :goals do 
+    member do
+      post :complete, to: 'goals#complete'
+    end
+  end
 
   resource :session, only: [:new, :create, :destroy]
   resources :users

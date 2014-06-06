@@ -1,5 +1,6 @@
 class Goal < ActiveRecord::Base
-  validates :goal, :user_id, :secret, :completed, presence: true
+  validates :goal, :user_id, presence: true
+  validates :secret, :completed, inclusion: { :in => [true, false] }
 
   before_validation do
     self.completed = false if completed.nil?

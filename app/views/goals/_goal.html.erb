@@ -1,4 +1,5 @@
 <%= goal.goal %>
-<%= goal.completed ? 'completed' : button_to('complete goal', complete_goal_url(goal)) %>
-<%=  %>
-<%=  %>
+
+<%= goal_completed(goal) %>
+<%= goal_edit_button(goal) %>
+<%= goal_delete_button(goal) %>

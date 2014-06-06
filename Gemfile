@@ -27,7 +27,7 @@ gem 'bcrypt'
 
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
-
+gem 'draper', '~> 1.3'
 
 group :development, :test do 
   gem 'rspec-rails'
@@ -40,6 +40,13 @@ group :test do
   gem 'capybara' 
   gem 'guard-rspec' 
   gem 'launchy' 
+end
+
+group :development do
+  gem 'annotate'
+  gem 'binding_of_caller'
+  gem 'better_errors'
+  gem 'pry-rails'  
 end
 
 # Use ActiveModel has_secure_password

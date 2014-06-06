@@ -1,1 +1,8 @@
-<%= @user.username %>
+<h1><%= @user.username %></h1>
+<%= link_to 'new goal', new_goal_url %>
+<ul>
+<% @user.goals.each do |goal| %>
+  <% next if goal.secret %>
+  <li><%= render goal %></li>
+<% end %>
+</ul>

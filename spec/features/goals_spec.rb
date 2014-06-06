@@ -55,7 +55,7 @@ feature 'goals' do
     
     it 'should not be able to edit a goal' do
       visit edit_goal_url(1)
-      expect(page).to have_content('Log In')
+      expect(page).to have_content('Sign In')
     end
     
     it 'should not be able to delete a goal' do
@@ -70,12 +70,13 @@ feature 'goals' do
     
     it 'should be editable' do
       click_link('edit goal')
-      expect(page).to have_content('edit goal')
+      expect(page).to have_content('Edit Goal')
     end
     
     it 'should update goal' do
       click_link('edit goal')
       fill_in 'goal', :with => 'updated goal'
+      click_button 'Update Goal'
       expect(page).to have_content('updated goal')
     end
   end

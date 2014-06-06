@@ -35,9 +35,9 @@ def sign_in(username)
   click_on "Log In"
 end
 
-def create_goal(goal_name, private=false)
+def create_goal(goal_name, secret=false)
   visit new_goal_url
   fill_in 'goal', with: 'sample goal'
-  check('private') if private
+  check('secret') if secret
   click_button 'Create Goal'
 end
